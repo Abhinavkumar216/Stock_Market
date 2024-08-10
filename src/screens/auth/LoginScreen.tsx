@@ -16,6 +16,7 @@ import SocialLoginButton from '../../components/auth/SocialLoginButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TouchableText from '../../components/auth/TouchableText';
 import BottomText from '../../components/auth/BottomText';
+import { signinWithGoogle } from '../../redux/SocialLogin';
 
 const LoginScreen = () => {
   const theme = useColorScheme();
@@ -38,11 +39,11 @@ const LoginScreen = () => {
         <SocialLoginButton
           icon={<Image source={GoogleIcon} style={{height: 20, width: 20}} />}
           text="Continue with Google"
-          onPress={() => {}}
+          onPress={() => signinWithGoogle()}
         />
         <SocialLoginButton
           icon={<Icon name="logo-apple" size={18} color="black" />}
-          text="Continue with Google"
+          text="Continue with Apple ID"
           onPress={() => {}}
         />
 
