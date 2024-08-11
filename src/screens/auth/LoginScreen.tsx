@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import TouchableText from '../../components/auth/TouchableText';
 import BottomText from '../../components/auth/BottomText';
 import { signinWithGoogle } from '../../redux/SocialLogin';
+import { navigate } from '../../utils/NavigationUtils';
 
 const LoginScreen = () => {
   const theme = useColorScheme();
@@ -49,7 +50,7 @@ const LoginScreen = () => {
 
         <TouchableText
           firstText="Use other email ID"
-          onPress={() => {}}
+          onPress={() => navigate("EmailScreen")}
           style={{marginVertical: 30, marginTop: 20}}
         />
 
