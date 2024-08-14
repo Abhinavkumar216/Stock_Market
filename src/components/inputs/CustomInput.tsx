@@ -88,7 +88,7 @@ const CustomInput: React.FC<
       >
         {leftIcon}
         <TextInput
-          placeholderTextColor={theme == "dark" ? "#dadbde" : "#cfd0d3"}
+          placeholderTextColor={theme == "dark" ? "#aaa" : "#cfd0d3"}
           style={[
             styles.textInput,
             {
@@ -99,6 +99,7 @@ const CustomInput: React.FC<
           ]}
           secureTextEntry={password ? hideEyeIcon : false}
           autoCorrect={false}
+        
           onFocus={() => {
             onFocus();
             setIsFocused(true);

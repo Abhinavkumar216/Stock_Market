@@ -16,7 +16,7 @@ const CustomSafeAreaView: FC<CustomSafeAreaViewProps> = ({ children }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    paddingHorizontal:20,
+    paddingHorizontal:10,
     flex: 1,
   } as ViewStyle,
 });
