@@ -1,27 +1,34 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {FC} from 'react';
-import {useTheme} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {RFValue} from 'react-native-responsive-fontsize';
-import { goBack } from '../../utils/NavigationUtils';
+import { StyleSheet, TouchableOpacity } from "react-native";
+import React, { FC } from "react";
+import Icon from "react-native-vector-icons/Ionicons";
+import { useTheme } from "@react-navigation/native";
+import { RFValue } from "react-native-responsive-fontsize";
+import { goBack, navigate } from "../../utils/NavigationUtil";
 
-const BackButton: FC = () => {
-  const {colors} = useTheme();
+interface BackButtonProps {
+  path?: string;
+}
+const BackButton: FC<BackButtonProps> = ({ path }) => {
+  const { colors } = useTheme();
   return (
-    <TouchableOpacity style={styles.container} onPress={()=> goBack()}>
-      <Icon name="arrow-back" size={RFValue(20)} color={colors.text} />
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        path ? navigate(path) : goBack();
+      }}
+    >
+      <Icon name="arrow-back" color={colors.text} size={RFValue(20)} />
     </TouchableOpacity>
   );
 };
 
-export default BackButton;
-
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    paddingVertical: 5,
-    marginVertical: 5,
+    width: "100%",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    paddingVertical: 2,
+    marginBottom: 5,
   },
 });
+export default BackButton;

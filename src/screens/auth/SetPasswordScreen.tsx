@@ -5,12 +5,12 @@ import CenteredLogo from "../../components/global/CenteredLogo";
 import CustomInput from "../../components/inputs/CustomInput";
 import CustomButton from "../../components/global/CustomButton";
 import { validatePasswordLength } from "../../utils/ValidationUtils";
-import { goBack, navigate, resetAndNavigate } from "../../utils/NavigationUtil";
+import { goBack, resetAndNavigate } from "../../utils/NavigationUtil";
 import { GlobalStyles } from "../../styles/GlobalStyles";
-import TouchableText from "../../components/auth/TouchableText";
 import { RFValue } from "react-native-responsive-fontsize";
+import GuidelineText from "../../components/global/GuidelineText";
 
-const EmailPasswordScreen = ({ route }: any) => {
+const SetPasswordScreen = ({ route }: any) => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ const EmailPasswordScreen = ({ route }: any) => {
     setLoading(true);
     setTimeout(() => {
       if (validate()) {
-        resetAndNavigate("AuthVerificationScreen");
+        resetAndNavigate("PhoneScreen");
       }
       setLoading(false);
     }, 3000);
@@ -45,9 +45,8 @@ const EmailPasswordScreen = ({ route }: any) => {
         </TouchableOpacity>
 
         <CustomInput
-          label="ENTER PASSWORD"
+          label="SET PASSWORD"
           returnKeyType="done"
-          placeholder="8-20 Characters"
           value={password}
           autoFocus={true}
           error={passwordError}
@@ -58,17 +57,17 @@ const EmailPasswordScreen = ({ route }: any) => {
           onSubmitEditing={handleOnSubmit}
           password
         />
-        <TouchableText
-          onPress={() => navigate('ForgotPassword',{
-            email:route.params.email
-          })}
-          firstText="Forgot Password?"
-          style={styles.forgotText}
-        />
       </ScrollView>
       <View style={GlobalStyles.bottomBtn}>
+        <GuidelineText
+          text={[
+            "Password must have at least one uppercase and lowercase letter.",
+            "Must contain atleast one number and one special character",
+            "Must not contain user's first/last name & email id",
+          ]}
+        />
         <CustomButton
-          text="ENTER"
+          text="NEXT"
           loading={loading}
           disabled={loading}
           onPress={() => {
@@ -88,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EmailPasswordScreen;
+export default SetPasswordScreen;

@@ -1,9 +1,9 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-import CustomText from '../global/CustomText';
-import {FONTS} from '../../constants/Fonts';
-import {useTheme} from '@react-navigation/native';
-import {Colors} from '../../constants/Colors';
+import React from "react";
+import { TouchableOpacity, StyleSheet } from "react-native";
+import CustomText from "../global/CustomText";
+import { useTheme } from "@react-navigation/native";
+import { Colors } from "../../constants/Colors";
+import { FONTS } from "../../constants/Fonts";
 
 interface SocialLoginButtonProps {
   icon: React.ReactNode;
@@ -16,9 +16,12 @@ const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
   text,
   onPress,
 }) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   return (
-    <TouchableOpacity style={[styles.container]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.container]}
+      onPress={onPress}
+    >
       {icon}
       <CustomText variant="h8" fontFamily={FONTS.Medium} style={styles.text}>
         {text}
@@ -27,23 +30,23 @@ const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
   );
 };
 
-export default SocialLoginButton;
-
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 10,
     padding: 10,
-    width: '90%',
+    width: "90%",
     marginVertical: 10,
     backgroundColor: Colors.light_background,
-    borderWidth: 1,
-    borderColor: '#DFDFDF',
+    borderWidth:1,
+    borderColor:'#DFDFDF'
   },
   text: {
     marginLeft: 10,
-    color: '#000',
+    color: "black",
   },
 });
+
+export default SocialLoginButton;

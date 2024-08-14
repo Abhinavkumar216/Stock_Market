@@ -1,25 +1,24 @@
-import {Image, StyleSheet, Text, useColorScheme, View} from 'react-native';
-import React from 'react';
-import CustomSafeAreaView from '../../components/global/CustomSafeAreaView';
+import React, {FC} from 'react';
 import CustomText from '../../components/global/CustomText';
+import CustomSafeAreaView from '../../components/global/CustomSafeAreaView';
 import {FONTS} from '../../constants/Fonts';
+import {Image, StyleSheet, View, useColorScheme} from 'react-native';
 import LoginImageDark from '../../assets/images/login_dark_animation.png';
 import LoginImageLight from '../../assets/images/login_animation_light.png';
 import GoogleIcon from '../../assets/images/google.png';
-
 import {
-  screenWidth,
-  screenHeight,
   normalizeModerately,
+  screenHeight,
+  screenWidth,
 } from '../../utils/Scaling';
 import SocialLoginButton from '../../components/auth/SocialLoginButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TouchableText from '../../components/auth/TouchableText';
 import BottomText from '../../components/auth/BottomText';
-import { signinWithGoogle } from '../../redux/SocialLogin';
-import { navigate } from '../../utils/NavigationUtils';
+import {signInWithGoogle} from '../../redux/SocialLogin';
+import {navigate} from '../../utils/NavigationUtil';
 
-const LoginScreen = () => {
+const LoginScreen: FC = () => {
   const theme = useColorScheme();
   return (
     <CustomSafeAreaView>
@@ -27,31 +26,31 @@ const LoginScreen = () => {
         <CustomText variant="h1" fontFamily={FONTS.Medium}>
           Together we Groww
         </CustomText>
-        <CustomText variant="h7" style={styles.subText}>
+        <CustomText variant="h7" style={styles.subText} fontFamily={FONTS.Bold}>
           Invest • Pay • Loans
         </CustomText>
-
-        <View style={styles.imageContainer}>
+        <View style={styles.imgContainer}>
           <Image
             style={styles.img}
-            source={theme == 'dark' ? LoginImageDark : LoginImageLight}
+            source={theme === 'dark' ? LoginImageDark : LoginImageLight}
           />
         </View>
+
         <SocialLoginButton
           icon={<Image source={GoogleIcon} style={{height: 20, width: 20}} />}
           text="Continue with Google"
-          onPress={() => signinWithGoogle()}
+          onPress={() => signInWithGoogle()}
         />
         <SocialLoginButton
           icon={<Icon name="logo-apple" size={18} color="black" />}
-          text="Continue with Apple ID"
+          text="Continue with Apple"
           onPress={() => {}}
         />
 
         <TouchableText
           firstText="Use other email ID"
-          onPress={() => navigate("EmailScreen")}
-          style={{marginVertical: 30, marginTop: 20}}
+          onPress={() => navigate('EmailScreen')}
+          style={styles.touchText}
         />
 
         <BottomText />
@@ -60,19 +59,21 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
-
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20,
+  },
+  touchText: {
+    marginVertical: 30,
+    marginTop: 20,
   },
   subText: {
     marginTop: 16,
     opacity: 0.6,
   },
-  imageContainer: {
+  imgContainer: {
     width: screenWidth,
     height: screenHeight * 0.45,
     marginVertical: normalizeModerately(30),
@@ -83,3 +84,5 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
+
+export default LoginScreen;

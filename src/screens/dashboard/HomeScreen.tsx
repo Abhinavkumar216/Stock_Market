@@ -1,14 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React, { FC } from "react";
+import CustomSafeAreaView from "../../components/global/CustomSafeAreaView";
+import CenteredLogo from "../../components/global/CenteredLogo";
+import CustomText from "../../components/global/CustomText";
 
-const HomeScreen = () => {
+const HomeScreen: FC = () => {
   return (
-    <View>
-      <Text style={{color:'white', fontSize:32,}}>HomeScreen</Text>
-      <Icon name="rocket" size={30} color="#900" />
-    </View>
-  )
-}
+    <CustomSafeAreaView>
+      <CenteredLogo />
+      <CustomText>Bottom Tabs</CustomText>
+    </CustomSafeAreaView>
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

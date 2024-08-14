@@ -1,5 +1,6 @@
-import {useColorScheme} from 'react-native';
-import {Colors} from '../constants/Colors';
+import { useColorScheme } from "react-native";
+import { Colors } from "../constants/Colors";
+
 
 interface ThemeColors {
   background: string;
@@ -20,10 +21,10 @@ export const lightTheme: Theme = {
   colors: {
     background: Colors.light_background,
     border: Colors.light_border,
-    card: Colors.light_card,
-    notification: Colors.light_text,
-    text: Colors.light_text,
+    card: Colors.light_text,
+    notification: Colors.light_card,
     primary: Colors.themeColor,
+    text: Colors.light_text,
   },
 };
 
@@ -33,13 +34,13 @@ export const darkTheme: Theme = {
     background: Colors.dark_background,
     border: Colors.dark_border,
     card: Colors.dark_card,
-    notification: Colors.dark_text,
-    text: Colors.dark_text,
+    notification: Colors.dark_card,
     primary: Colors.themeColor,
+    text: Colors.dark_text,
   },
 };
 
 export const useCustomTheme = (): Theme => {
-  const sceme = useColorScheme();
-  return sceme === 'light' ? lightTheme : darkTheme;
+  const scheme = useColorScheme();
+  return scheme === "dark" ? darkTheme : lightTheme;
 };
